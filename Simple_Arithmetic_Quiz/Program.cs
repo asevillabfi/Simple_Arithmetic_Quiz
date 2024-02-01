@@ -40,7 +40,7 @@ namespace ArithmeticQuiz
         // Generate a set of Questions for user to answer
         public void Question()
         {
-            Console.WriteLine("Question {0}: What is {1} {2} {3}?", question, num1, op, num2);
+            Console.WriteLine($"Question {question}: What is {num1} {op} {num2}?");
             Console.Write("Your Answer: ");
             bool isValidInput = int.TryParse(Console.ReadLine(), out answer);
 
@@ -62,20 +62,40 @@ namespace ArithmeticQuiz
             return answer == correctAnswer ? "Correct!\n" : $"Incorrect. The correct answer is {correctAnswer}.\n";
         }
 
+        // Show results 
+        private void Results(int correctAnswers, int totalQuestions)
+        {
+            double percentage = (double)correctAnswers / totalQuestions * 100;
+
+            Console.WriteLine("Results:");
+            Console.WriteLine($"Total Correct Answers: {correctAnswers}");
+            Console.WriteLine($"Percentage of Correct Answers: {percentage}%\n");
+        }
+
         // Display all
         public void Display()
         {
+            int correctAnswers = 0;
+
             // Looping until it reaches its random limit number
             do
             {
                 Random();
                 Question();
                 Console.WriteLine(Check());
+
+                // Count correct answers
+                if (answer == CalculateAnswer(num1, num2, op))
+                {
+                    correctAnswers++;
+                }
             } while (question <= limit);
+
+            Results(correctAnswers, limit);
         }
 
         // Calculate the question
-        static double CalculateAnswer(int num1, int num2, char op)
+        private static double CalculateAnswer(int num1, int num2, char op)
         {
             switch (op)
             {
