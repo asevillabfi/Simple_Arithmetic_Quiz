@@ -69,7 +69,7 @@ namespace ArithmeticQuiz
 
             Console.WriteLine("Results:");
             Console.WriteLine($"Total Correct Answers: {correctAnswers}");
-            Console.WriteLine($"Percentage of Correct Answers: {percentage}%\n");
+            Console.WriteLine($"Percentage of Correct Answers: {Math.Round(percentage)}%\n");
         }
 
         // Display all
