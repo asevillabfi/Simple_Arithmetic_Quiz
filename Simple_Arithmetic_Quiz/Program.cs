@@ -65,7 +65,7 @@ namespace ArithmeticQuiz
         // Show results 
         private void Results(int correctAnswers, int totalQuestions)
         {
-            double percentage = (double)totalQuestions / correctAnswers * 100;
+            double percentage = ((double)correctAnswers / totalQuestions) * 100;
 
             Console.WriteLine("Results:");
             Console.WriteLine($"Total Correct Answers: {correctAnswers}");
